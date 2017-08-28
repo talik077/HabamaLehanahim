@@ -1,0 +1,23 @@
+<div class="help-button-wrapper">
+	<img class="help-button" src="help_button.png">
+	{{shouldHideMainTopBar() ? '' : 'איך מחפשים?' }}
+	<div class="help-floater"
+		ng-class="{'help-floater-down': shouldHideMainTopBar(),
+					'help-floater-up': !shouldHideMainTopBar() }">
+		<div ng-if="me_as_person">
+			שלום <b>{{me_as_person.name}}</b>!
+		</div>
+		<div>ניתן לחפש לפי:</div>
+		<ul>
+			<li>שם
+			<li>תפקיד
+			<li>דרגה
+			<li>קהילה
+			<li>יום הולדת ועוד...
+		</ul>
+		<div>לדוגמא:</div>
+		<ul>
+			<li class="example-search" ng-click="searchFor('ג\'וש טור חדשנות')"><i>ג'וש טור חדשנות</i>
+		</ul>
+	</div>
+</div>

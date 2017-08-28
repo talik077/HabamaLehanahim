@@ -1,0 +1,26 @@
+<div ng-hide="field.isBeingEdited" ng-click="maybeStartEditingField(person, field)">
+	<div ng-if="field.value"
+		ng-attr-title="{{!canEditField(person, field) && field.value ? '' : 'ערוך' }}"
+		ng-class="{'editable-field': canEditField(person, field)}">
+		<span ng-if="field.value" ng-class="{'name-field-value': isNameField(field)}">{{field.value}}</span>
+	</div>
+	<div ng-if="!field.value">
+		<i class="edit-me" ng-if="canEditField(person, field)">הוסף {{field.name}}</i>
+		<span ng-if="!canEditField(person, field)">&nbsp;</span>
+	</div>
+</div>
+<div ng-if="field.isBeingEdited" class="edit-field-wrapper">
+	<form  ng-submit="setPersonalTextField(person, field)">
+		<input type="text" ng-model="field.valueToAdd">
+	</form>
+	<div class="change-personal-text"
+		 style="float: right"
+		 ng-click="setPersonalTextField(person, field)">
+		שמור
+	</div>
+	<div class="change-personal-text"
+		 style="float: left"
+		 ng-click="field.isBeingEdited = false;">
+		בטל
+	</div>
+</div>

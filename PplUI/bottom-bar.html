@@ -1,0 +1,32 @@
+<table class="bottom-bar">
+	<tr>
+		<td>
+			<div class="bug-report-wrapper">
+				<img ng-click="bugReportState = BugReporterStates.REPORTING;"
+					 ng-hide="bugReportState != BugReporterStates.INITIAL"
+					 class="bug-report-image"
+					 src="bug_report.png">
+				<div ng-hide="bugReportState != BugReporterStates.REPORTING">
+			        <button ng-click="bugReportState = BugReporterStates.INITIAL;"
+			        	class="cancel-bug-report">
+			        	בטל
+			        </button>
+			        <form ng-submit="reportBug()">
+			        	<div><b>אנו מצטערים על האי נוחות!</b></div>
+			        	<div>נשמח לפירוט על הבעיה שלכם</div>
+			        	<textarea type="text" ng-model="bugToReport"></textarea>
+						<button type="submit">שלח</button>
+			        </form>
+				</div>
+				<div ng-hide="bugReportState != BugReporterStates.LOADING">נטען...</div>
+				<div ng-hide="bugReportState != BugReporterStates.REPORTED">
+					<b>תודה על הדיווח!</b>
+					המהנדסים כבר על זה.
+				</div>
+			</div>
+		</td>
+		<td class="share-image-cell">
+			<img ng-click="share()" class="share-image" src="share.png">
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,81 @@
+
+ <md-list>
+	 <table class="person-table list-wrapper" ng-class="{'person-show-more': showPersonExpanded(person)}" id="{{person.mispar_ishi}}" >
+	  	<tr>
+	  		<td>
+	        	<md-list-item>
+			        <div layout="column" style="width:100%; padding-right: 16px;">
+				        <div flex>
+				        	<div layout="row">
+				            	<table class="top-row-table"><tr>
+				            		<td class="thumbnail-wrapper-cell"
+				            			ng-class="{'thumbnail-wrapper-cell-clickable' : showMoreLessButton(person)}">
+								  		<div class="thumbnail-wrapper" ng-click="onMorePressed(person);">
+								            <img ng-if="showMoreButton(person)"
+								            	class="more-less"
+								            	src="plus.png"
+								            	title="הרחב">
+								            <img ng-if="showLessButton(person)"
+								            	class="more-less"
+								            	src="minus.png"
+								            	title="צמצם">
+								  			<img ng-if="person.picture" class="thumbnail"
+							  					ng-src="data:image/png;base64,{{person.picture}}">
+								  			<img ng-if="!person.picture" class="thumbnail" src="avatar.png">
+								  		</div>
+				            		</td>
+				            		<td>
+				            			<div>
+											<div>
+												<span class="value-name-field" ng-class="{'person-show-more-name': showPersonExpanded(person)}">
+													{{person.top_row[0].value}}</span>
+											</div>
+											<div>
+												<span class="value-row-field-name">{{person.top_row[2].value}}</span>
+											</div>
+										</div>
+				            		</td>
+
+					            	<td ng-repeat="field in CheckIfSpecialField(person.top_row)"
+					            		ng-style="{width: field.fixWidth ? '140px' : ''}">
+						        		<div class="field-row" ng-controller="EditableFieldController" editable-field></div>
+					                </td>
+
+					                <td class="birthday-icon"
+					                    ng-class="{'clickable-birthday': person.mail}"
+					                	ng-if="person.is_birthday_today"
+					                	ng-click="sendBirthday()">
+					            		<img src="birthday_searcher.png" title="יום הולדת שמח!">
+					                </td>
+					            	
+					            	<td class="email-icon" style="padding-top:2px"
+					            	 	ng-hide="!person.mail" ng-click="sendEmail(person.mail)" title="שלח מייל">
+					            		<img class:"email-icon-img" ng-if="!showPersonExpanded(person)" src="mail.png">
+					            		<img ng-if="showPersonExpanded(person)" src="mail-chosen.png">
+					                </td>
+					                <td class="pin-wrapper-cell"
+									  	ng-if="person.mail">
+										<input type="checkbox" ng-checked=isPinned(person) ng-click="togglePinPerson(person)" ng-title="{{$scope.isPinnedMail}}">
+									</td>
+				            	</tr>
+				            </table>
+				            </div>
+				            <div layout="row" style="padding-left:12px">
+					            <div flex ng-hide="!showPersonExpanded(person)" class="extra-list-wrapper">
+					            	<ul ng-repeat="row in person.bottom_section.rows" class="bottom-row-list">
+						            	<li ng-repeat="field in row" class="value-row-field">
+					            			<div class="value-row-field-name">{{field.name}}</div>
+						            		<div ng-controller="EditableFieldController" editable-field></div>
+						                </li>
+						                <span class="text-stretcher"></span>
+					            	</ul>
+					  				<div ng-controller="PersonTagsController" person-tags></div>
+				                </div>
+					  		</div>
+					  	</div>
+				  	</div>
+	        	</md-list-item>
+		    </td>
+		</tr>
+	</table>
+</md-list>

@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Innovation" Class="LogDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=dev0111laka01;Initial Catalog=Innovation;User ID=boom_nls" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="InnovationConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Requests" Member="Requests">
+    <Type Name="Request">
+      <Column Name="Request" Member="Request1" Type="System.String" DbType="VarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.String" DbType="VarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Time" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Log_Request" Member="Log" ThisKey="ID" OtherKey="ID" Type="Log" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.QueryTimes" Member="QueryTimes">
+    <Type Name="QueryTime">
+      <Column Name="Elapsed" Type="System.Double" DbType="Float NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Query" Type="System.String" DbType="VarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Now" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ShowAll" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BugReports" Member="BugReports">
+    <Type Name="BugReport">
+      <Column Name="Report" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ReporterMisparIshi" Type="System.String" DbType="VarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TimeReported" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Persons" Member="PersonLogs">
+    <Type Name="PersonLog">
+      <Column Name="MisparIshi" Type="System.String" DbType="VarChar(9) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="WorkPhone" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="GivenName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="JobTitle" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="LongWorkTitle" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="AlternateName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Department" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Company" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Mobile" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Mail" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Picture" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Surname" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Darga" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Sex" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="BirthdayDisplayString" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="JobTitleSearchable" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="LongWorkTitleSearchable" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="AlternateNameSearchable" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="DepartmentSearchable" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="CompanySearchable" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Tags" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="OtherTelephone" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Fax" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="HomeTelephone" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="WhatIDo" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MobilePhoneIsManuallyInput" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="WorkPhoneIsManuallyInput" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="OtherPhoneIsManuallyInput" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SexIsManuallyInput" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Logs" Member="Logs">
+    <Type Name="Log">
+      <Column Name="ID" Type="System.String" DbType="VarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RequestsMade" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MailSent" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MorePressed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SeeAllPressed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MisparIshi" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="GivenName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Source" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Shared" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Log_Request" Member="Requests" ThisKey="ID" OtherKey="ID" Type="Request" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AdminChanges" Member="AdminChanges">
+    <Type Name="AdminChange">
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TimeAdded" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

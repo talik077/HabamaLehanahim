@@ -1,0 +1,17 @@
+﻿{
+	"manifest_version": 3,
+	"name": "הבמה לאנשים",
+	"description": "Find people in the Air Force",
+	"version": "1.2.1",
+	"browser_action": {
+		"default_icon": "magnifying_glass_logo.png",
+		"default_popup": "popup.html"
+	},
+	"permissions": [
+		"http://app0111laka01.iaf/",
+		"http://localhost:34781/api/values/",
+		"tabs",
+		"storage"
+	],
+	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}

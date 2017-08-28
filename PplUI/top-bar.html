@@ -1,0 +1,28 @@
+<div ng-hide="shouldHideMainTopBar()" >
+	<table class="top-area-section">
+		<tr>
+			<td class="top-bar-welcome-wrapper" ng-if="me_as_person" ng-click="searchForMe()">
+				<div class="top-bar-avatar-wrapper">
+					<img ng-if="me_as_person.picture" class="top-bar-avatar"
+						ng-src="data:image/png;base64,{{person.picture}}"
+						title="חפש את עצמי">
+					<img ng-if="!person.picture" class="top-bar-avatar" src="avatar.png" title="חפש את עצמי">
+					<span ng-switch on="me_as_person.activity_level">
+						<img ng-switch-when="1" class="avatar-user-level-icon" title="משתמש טיל" src="rocket.png">
+						<img ng-switch-when="2" class="avatar-user-level-icon" title="משתמש הרבה" src="airplane.png">
+						<img ng-switch-when="3" class="avatar-user-level-icon" title="משתמש צעיר" src="paper_airplane.png">
+					</span>
+				
+				</div>
+				<div class="top-bar-welcome">{{getGreeting()}}</div>
+				</div>
+			</td>
+			<td>
+				<img class="add-an-idea-logo" src="bama_link.png" ng-click="goToBama()">
+			</td>
+		</tr>
+	</table>
+	<div class="main-input-label-wrapper">
+		<img class="search-logo" src="magnifying_glass_logo_with_text.png">
+	</div>
+</div>

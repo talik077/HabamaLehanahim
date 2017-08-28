@@ -1,0 +1,17 @@
+<table ng-if="peopleToEmail.length" ng-class="GetMailingListClass()">
+	<tr>
+		<td ng-if="peopleToEmail.length" class="mailing-list-title">נבחרו:</td>
+	<td class='mailing-list-person-wrapper'>
+		<div>
+			<div ng-repeat="person in peopleToEmail track by $index" class="person-to-email">
+				{{person.name}}
+				<div class="remove-from-email-list" ng-click="togglePinPerson(person)">X</div>
+			</div>
+		</div>
+	</td>
+		<td ng-if="peopleToEmail.length" class="mailing-list-buttons-wrapper">
+			<button ng-if="peopleToEmail!=0" ng-click="clearPinned()" class="mailing-list-cancel">ביטול</button>
+	 		<button ng-if="peopleToEmail!=0" ng-click="sendMailToPeople(peopleToEmail)" class="mailing-list-send">שלח לנבחרים</button>
+		</td>
+	</tr>
+</table>

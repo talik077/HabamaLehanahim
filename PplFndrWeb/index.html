@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html ng-app="phoneLocator" dir="rtl">
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="lib/angular/angular.js"></script>
+    <script src="app/index.js"></script>
+    <link rel="stylesheet" href="lib/angular-material/angular-material.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body ng-controller="FinderCtrl">
+	<div class="everything-wrapper">
+	 	<div ng-controller="TopBarController" top-bar></div>
+		
+		<div class="main-section">
+			<div main-input></div>
+			
+			<div mailing-list></div>
+
+			<div>
+			    <h3 ng-if="appState == AppStates.NOT_ENOUGH_CHARACTERS" class="header">נא להקליד יותר תווים</h3>
+				<div ng-if="appState == AppStates.SHOW_PEOPLE" show-people></div>
+				<div ng-if="appState == AppStates.LOADING"><div class="spinner"></div></div>
+			    <h3 ng-if="appState == AppStates.ERROR" class="header">
+			    	משהו לא תקין קרה...נא ליצור קשר עם אדם קרטייה 0524326530
+			    </h3>
+			</div>
+		</div>
+		
+		<div bottom-bar ng-controller="BottomBarController" class="web-bottom-bar"></div>
+	</div>
+</body>
+</html>

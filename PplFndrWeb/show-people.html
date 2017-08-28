@@ -1,0 +1,26 @@
+<!-- When showing a list of people, we show metadata, the people themselves, and some action buttons underneath. -->
+<div style="padding-bottom:40px;">
+	<div class="show-people">
+    <div class="metanote">
+	  <span ng-switch on="people.length">
+	  	  <span ng-switch-when="0">לא נמצאו רישומים לשאילתה</span>
+	  	  <span ng-switch-default>
+	  	  	{{people.length}} תוצאות 
+	  	  	<span ng-if="metadata.shouldShowSeeMore">הראשונות </span>
+	  	  	עבור 
+  	  	  </span>
+	 	  "<b>{{metadata.query}}</b>"
+	  	  <span ng-switch-when="1">בול במטרה!</span>
+	  </span>
+    </div>
+    <div ng-repeat="person in people" ng-controller="PersonController" person></div>
+    <div ng-if="metadata.shouldShowSeeMore"
+		   class="see-more mailing-list-send"
+		   ng-click="submitQuery(true)">
+		   הצג את כל התוצאות (עלול להיות איטי)
+	</div>
+</div>
+	<div ng-if="showSendMailToAllButton()" style="text-align: center">
+		<div class="mailing-list-send" ng-click="sendMailToPeople(people)">שלח מייל לכל הרשימה</div>
+	</div>
+</div>

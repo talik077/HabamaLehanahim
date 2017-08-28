@@ -1,0 +1,37 @@
+<div class="main-input-section">
+	<div class="input-wrapper">
+		<img ng-if="shouldHideMainTopBar()"
+			 class="small-magnifying-glass-logo"
+			 src="magnifying_glass_logo.png">
+		<div class="main-input-form-wrapper">
+			<form ng-submit="submitQuery()">
+				<img ng-if="!query.length"
+					 class="main-input-search-icon" src="search_icon.png">
+				<img ng-if="query.length" class="clear-search-button clear-search"
+					 src="clear_search_button.png" ng-click="clearQuery()">
+				<input type="text"
+					ng-change="onTextChange()"
+					ng-trim="false"
+					ng-model="query"
+					class="main-input"
+					placeholder="{{'חפש מישהו'}}"
+					autofocus></input>
+			</form>
+		</div>
+		<span ng-if="shouldHideMainTopBar()" help-text></span>
+		<span ng-if="shouldHideMainTopBar()">
+			<img class="birthday-search" src="birthday_searcher.png"
+				title="ימי הולדת היום" ng-click="searchForBirthdays()">
+		</span>
+		<table ng-if="!shouldHideMainTopBar()" class="main-input-helpful-buttons">
+			<tr>
+				<td class="help-button-cell-wrapper" help-text></td>
+				<td class="birthday-search-wrapper">
+					<img class="birthday-search" src="birthday_searcher.png"
+						title="ימי הולדת היום" ng-click="searchForBirthdays()">
+						למי יש יום הולדת?
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

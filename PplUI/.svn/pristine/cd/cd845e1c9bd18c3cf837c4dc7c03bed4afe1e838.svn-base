@@ -1,0 +1,46 @@
+<div ng-if="person.tags" class="person-tag-wrapper">
+	<div class="tag"
+		 ng-repeat="tag in person.tags"
+	     ng-if="tag.tag"
+	     ng-style="{'background-color': getTagColor(tag.type)}"
+	     ng-class="{'deletable-tag': canDeleteTag(tag)}">
+	     <div class="tag-name"
+	     	ng-attr-title="{{'חפש #' + tag.tag}}"
+		 	ng-click="searchForTag(tag.tag)">
+			<span>{{tag.tag}}</span>
+		</div>
+		<div class="delete-tag"
+			 ng-click="deleteTag(tag)">x</div>
+		</div>
+</div>
+<div class="tag-adder"
+	 ng-if="canAddTags() && !person.show_tag_adding"
+	 title="הסף תג על עצמך"
+	 ng-click="showTagsToAdd()">+</div>
+
+
+<div ng-if="person.show_tag_adding">
+	<div class="tags-to-add-text">להוסיף תגים מסוג:</div>
+	<div class="tags-to-add">
+		<div ng-repeat="tagType in person.tagTypes"
+			 ng-if="tagType.tags.length"
+			 ng-style="{'background-color': getTagColor(tagType.title)}"
+			 class="tag-title"
+			 ng-class="{'current-tag-type-title': tagType.isBeingShown}"
+			 ng-click="showTagTypeToAdd(tagType)">
+		 	{{tagType.title}}
+		</div>
+	</div>
+
+
+	<div ng-repeat="tagType in person.tagTypes" ng-if="tagType.isBeingShown">
+		<div ng-repeat="tag in tagType.tags"
+	 		 ng-style="{'background-color': getTagColor(tagType.title)}"
+			 class="tag">
+			<div ng-click="addTag(tag)" class="tag-name">
+			 	{{tag}}
+			</div>
+		</div>
+	</div>
+</div>
+
